@@ -15,12 +15,12 @@ export function Reveal({ children, className = "", delay = 0 }: RevealProps) {
     const el = ref.current;
     if (!el) return;
     const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
+        (entries) => {
+          if (entries[0]?.isIntersecting) {
+            setVisible(true);
+            observer.disconnect();
+          }
+        },
       { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
     );
     observer.observe(el);

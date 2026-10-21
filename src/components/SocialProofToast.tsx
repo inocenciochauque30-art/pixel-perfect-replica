@@ -31,8 +31,10 @@ export function SocialProofToast() {
 
     const show = () => {
       index = (index + 1 + Math.floor(Math.random() * (BUYERS.length - 1))) % BUYERS.length;
+      const buyer = BUYERS[index];
+      if (!buyer) return;
       setPurchase({
-        ...BUYERS[index],
+        ...buyer,
         minutes: 1 + Math.floor(Math.random() * 9),
       });
       hideTimer = setTimeout(() => setPurchase(null), 5000);
