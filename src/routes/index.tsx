@@ -20,7 +20,7 @@ import {
   ChevronDown,
 } from "lucide-react";
 import { useEffect, useState } from "react";
-import heroImg from "@/assets/hero.jpg";
+import heroBg from "@/assets/hero-bg.jpg.asset.json";
 import ebookMockup from "@/assets/ebook-mockup.png";
 import { Reveal } from "@/components/Reveal";
 import { SocialProofToast } from "@/components/SocialProofToast";
@@ -208,11 +208,20 @@ function LandingPage() {
       <SocialProofToast />
 
       {/* ------------------------------- HERO ------------------------------- */}
-      <header className="mx-auto max-w-6xl px-5 pt-10 pb-16 sm:pt-16">
-        <div className="grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr]">
+      <header className="relative overflow-hidden">
+        {/* Foto de fundo da hero + overlay roxo escuro para o texto ficar legível */}
+        <img
+          src={heroBg.url}
+          alt=""
+          aria-hidden
+          className="absolute inset-0 h-full w-full object-cover object-top"
+        />
+        <div aria-hidden className="absolute inset-0 bg-background/65" />
+
+        <div className="relative mx-auto max-w-6xl px-5 pt-10 pb-16 sm:pt-16 sm:pb-20">
           <Reveal>
-            <div>
-              <span className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-4 py-2 text-[11px] font-semibold tracking-widest text-primary uppercase sm:text-xs">
+            <div className="max-w-2xl">
+              <span className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-4 py-2 text-[11px] font-semibold tracking-widest text-primary uppercase backdrop-blur-sm sm:text-xs">
                 <Sparkles className="h-4 w-4" />
                 Guia prático para jovens de 18-30 anos · Angola e Moçambique
               </span>
@@ -243,26 +252,13 @@ function LandingPage() {
             </div>
           </Reveal>
 
-          <Reveal delay={150}>
-            <div className="relative">
-              <div className="glow-primary overflow-hidden rounded-4xl border border-primary/30">
-                <img
-                  src={heroImg}
-                  alt="Jovem moçambicano gravando conteúdo para TikTok com luz roxa neon"
-                  width={1024}
-                  height={1280}
-                  className="h-full w-full object-cover"
-                />
-              </div>
-              <div className="animate-float absolute -bottom-5 -left-4 flex items-center gap-2 rounded-2xl border-hairline bg-card/95 px-4 py-3 shadow-xl backdrop-blur-md sm:-left-8">
-                <BadgeCheck className="h-5 w-5 text-success" />
-                <span className="text-sm font-semibold">1 hora por dia é suficiente</span>
-              </div>
-              <div className="animate-float-slow absolute -top-4 right-2 rounded-2xl border-hairline bg-card/95 px-4 py-3 shadow-xl backdrop-blur-md sm:right-6">
-                <span className="font-display text-sm font-bold text-success">+ views = + MT</span>
-              </div>
-            </div>
-          </Reveal>
+          <div className="animate-float absolute top-1/2 right-4 hidden items-center gap-2 rounded-2xl border-hairline bg-card/95 px-4 py-3 shadow-xl backdrop-blur-md sm:right-8 lg:flex">
+            <BadgeCheck className="h-5 w-5 text-success" />
+            <span className="text-sm font-semibold">1 hora por dia é suficiente</span>
+          </div>
+          <div className="animate-float-slow absolute bottom-14 right-6 hidden rounded-2xl border-hairline bg-card/95 px-4 py-3 shadow-xl backdrop-blur-md sm:right-14 lg:block">
+            <span className="font-display text-sm font-bold text-success">+ views = + MT</span>
+          </div>
         </div>
       </header>
 
