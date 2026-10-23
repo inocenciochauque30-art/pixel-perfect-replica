@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Link } from "@tanstack/react-router";
 import {
   BadgeCheck,
   Banknote,
@@ -22,6 +21,7 @@ import {
 import { useEffect, useState } from "react";
 import heroBg from "@/assets/hero-bg.jpg.asset.json";
 import ebookMockup from "@/assets/ebook-mockup.png";
+import { CheckoutModal } from "@/components/CheckoutModal";
 import { Reveal } from "@/components/Reveal";
 import { SocialProofToast } from "@/components/SocialProofToast";
 
