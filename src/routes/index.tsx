@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Link } from "@tanstack/react-router";
 import {
   BadgeCheck,
   Banknote,
@@ -22,6 +21,7 @@ import {
 import { useEffect, useState } from "react";
 import heroBg from "@/assets/hero-bg.jpg.asset.json";
 import ebookMockup from "@/assets/ebook-mockup.png";
+import { CheckoutModal } from "@/components/CheckoutModal";
 import { Reveal } from "@/components/Reveal";
 import { SocialProofToast } from "@/components/SocialProofToast";
 
@@ -183,10 +183,19 @@ function useDailyCountdown() {
 
 /* --------------------------------- page ----------------------------------- */
 
-function CtaButton({ className = "", children }: { className?: string; children?: React.ReactNode }) {
+function CtaButton({
+  className = "",
+  children,
+  onClick,
+}: {
+  className?: string;
+  children?: React.ReactNode;
+  onClick?: () => void;
+}) {
   return (
-    <Link
-      to="/checkout"
+    <button
+      type="button"
+      onClick={onClick}
       className={`glow-success animate-pulse-glow inline-flex items-center justify-center gap-2 rounded-2xl bg-success px-8 py-4 font-display text-lg font-bold tracking-wide text-success-foreground uppercase transition-transform hover:scale-[1.03] active:scale-95 ${className}`}
     >
       {children ?? (
@@ -195,13 +204,15 @@ function CtaButton({ className = "", children }: { className?: string; children?
           Quero meu primeiro mil
         </>
       )}
-    </Link>
+    </button>
   );
 }
 
 function LandingPage() {
   const countdown = useDailyCountdown();
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [checkoutOpen, setCheckoutOpen] = useState(false);
+  const openCheckout = () => setCheckoutOpen(true);
 
   return (
     <div className="bg-hero-radial min-h-screen overflow-x-clip pb-28">
@@ -237,7 +248,7 @@ function LandingPage() {
               </p>
 
               <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-                <CtaButton />
+                <CtaButton onClick={openCheckout} />
                 <div className="text-sm text-muted-foreground">
                   <p className="flex items-center gap-1.5">
                     <ShoppingBag className="h-4 w-4 text-success" />
@@ -313,7 +324,7 @@ function LandingPage() {
         </div>
         <Reveal delay={200}>
           <div className="mt-10 text-center">
-            <CtaButton />
+            <CtaButton onClick={openCheckout} />
           </div>
         </Reveal>
       </section>
@@ -392,11 +403,11 @@ function LandingPage() {
                   <Flame className="h-4 w-4" /> Oferta de lançamento
                 </span>
                 <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
-                  Tudo isto por menos de <span className="text-gradient-neon">300MT</span>
+                  Tudo isto por menos de <span className="text-gradient-neon">200MT</span>
                 </h2>
                 <div className="mt-4 flex items-end gap-3">
                   <span className="text-xl text-muted-foreground line-through">1.497MT</span>
-                  <span className="font-display text-5xl font-bold text-success">297MT</span>
+                  <span className="font-display text-5xl font-bold text-success">197MT</span>
                   <span className="pb-1 text-sm text-muted-foreground">hoje</span>
                 </div>
                 <ul className="mt-6 space-y-3 text-sm sm:text-base">
@@ -431,7 +442,9 @@ function LandingPage() {
                 </div>
 
                 <div className="mt-6">
-                  <CtaButton className="w-full">Baixar e-book agora — 297MT</CtaButton>
+                  <CtaButton className="w-full" onClick={openCheckout}>
+                    Baixar e-book agora — 197MT
+                  </CtaButton>
                 </div>
               </div>
             </div>
@@ -498,7 +511,7 @@ function LandingPage() {
               Amanhã vais wish ter começado hoje. Começa agora.
             </p>
             <div className="mt-6">
-              <CtaButton />
+              <CtaButton onClick={openCheckout} />
             </div>
           </Reveal>
         </div>
@@ -518,14 +531,17 @@ function LandingPage() {
 
       {/* --------------------------- CTA FLUTUANTE ---------------------------- */}
       <div className="fixed inset-x-0 bottom-0 z-50 border-t border-success/25 bg-background/90 p-3 backdrop-blur-md">
-        <Link
-          to="/checkout"
+        <button
+          type="button"
+          onClick={openCheckout}
           className="animate-pulse-glow flex w-full items-center justify-center gap-2 rounded-2xl bg-success px-6 py-4 font-display text-base font-bold tracking-wide text-success-foreground uppercase transition-transform active:scale-95 sm:mx-auto sm:max-w-md sm:text-lg"
         >
           <ShoppingBag className="h-5 w-5" />
-          Baixar e-book agora — 297MT
-        </Link>
+          Baixar e-book agora — 197MT
+        </button>
       </div>
+
+      <CheckoutModal open={checkoutOpen} onClose={() => setCheckoutOpen(false)} />
     </div>
   );
 }
