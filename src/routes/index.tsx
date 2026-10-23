@@ -211,6 +211,8 @@ function CtaButton({
 function LandingPage() {
   const countdown = useDailyCountdown();
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [checkoutOpen, setCheckoutOpen] = useState(false);
+  const openCheckout = () => setCheckoutOpen(true);
 
   return (
     <div className="bg-hero-radial min-h-screen overflow-x-clip pb-28">
