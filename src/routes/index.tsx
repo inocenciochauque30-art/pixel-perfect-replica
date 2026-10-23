@@ -183,15 +183,27 @@ function useDailyCountdown() {
 
 /* --------------------------------- page ----------------------------------- */
 
-function CtaButton({ className = "", onClick }: { className?: string; onClick?: () => void }) {
+function CtaButton({
+  className = "",
+  children,
+  onClick,
+}: {
+  className?: string;
+  children?: React.ReactNode;
+  onClick?: () => void;
+}) {
   return (
     <button
       type="button"
       onClick={onClick}
       className={`glow-success animate-pulse-glow inline-flex items-center justify-center gap-2 rounded-2xl bg-success px-8 py-4 font-display text-lg font-bold tracking-wide text-success-foreground uppercase transition-transform hover:scale-[1.03] active:scale-95 ${className}`}
     >
-      <Zap className="h-5 w-5" />
-      Quero meu primeiro mil
+      {children ?? (
+        <>
+          <Zap className="h-5 w-5" />
+          Quero meu primeiro mil
+        </>
+      )}
     </button>
   );
 }
