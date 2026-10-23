@@ -14,7 +14,7 @@ export const Route = createFileRoute("/checkout")({
   head: () => ({
     meta: [
       {
-        title: "Checkout — TikTok do Zero ao Lucro | 297MT",
+        title: "Checkout — TikTok do Zero ao Lucro | 197MT",
         description:
           "Finaliza a tua compra do e-book TikTok do Zero ao Lucro por M-Pesa ou eMola. Acesso imediato após o pagamento.",
       },
@@ -73,7 +73,7 @@ function CheckoutPage() {
             <h1 className="mt-5 text-2xl font-bold">Pedido recebido!</h1>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
               {nome.split(" ")[0]}, acabamos de enviar o pedido de pagamento de{" "}
-              <strong className="text-foreground">297MT</strong> para o teu{" "}
+              <strong className="text-foreground">197MT</strong> para o teu{" "}
               {metodo === "mpesa" ? "M-Pesa" : "eMola"} ({telefone}).
             </p>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
@@ -105,7 +105,7 @@ function CheckoutPage() {
                 <p className="text-muted-foreground">E-book + 2 bônus exclusivos</p>
                 <p className="mt-1">
                   <span className="text-xs text-muted-foreground line-through">1.497MT</span>{" "}
-                  <span className="font-display text-lg font-bold text-success">297MT</span>
+                  <span className="font-display text-lg font-bold text-success">197MT</span>
                 </p>
               </div>
             </div>
@@ -194,7 +194,7 @@ function CheckoutPage() {
                 ) : (
                   <>
                     <Lock className="h-5 w-5" />
-                    Pagar 297MT com {metodo === "mpesa" ? "M-Pesa" : "eMola"}
+                    Pagar 197MT com {metodo === "mpesa" ? "M-Pesa" : "eMola"}
                   </>
                 )}
               </button>
