@@ -2,8 +2,11 @@
 <html lang="pt">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#0A0A0A"><meta name="description" content="Menu de consulta do Mangueiras Restaurante e Bar.">
-<title>Mangueiras Restaurante e Bar | Menu</title>
+<meta name="theme-color" content="#0A0A0A"><meta name="description" content="Consulte o menu de comidas e bebidas do Mangueiras Restaurante e Bar. Sabores e preços em Meticais."><meta name="robots" content="index,follow">
+<meta property="og:type" content="website"><meta property="og:locale" content="pt_MZ"><meta property="og:title" content="Mangueiras Restaurante e Bar | Menu Digital"><meta property="og:description" content="Consulte o nosso menu de comidas e bebidas. Menu digital de consulta por QR Code.">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="Mangueiras Restaurante e Bar | Menu Digital"><meta name="twitter:description" content="Consulte o nosso menu de comidas e bebidas.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230a0a0a'/%3E%3Cpath d='M32 8 37 25 54 32 37 39 32 56 25 39 8 32 25 25Z' fill='none' stroke='%23d4af37' stroke-width='2.5'/%3E%3Ccircle cx='32' cy='32' r='5' fill='%23f5d67b'/%3E%3C/svg%3E">
+<title>Mangueiras Restaurante e Bar | Menu Digital</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -41,10 +44,21 @@ footer{position:relative;z-index:1;text-align:center;border-top:1px solid #8e702
 footer small{display:block;color:#a58a4d;font:10px 'DM Sans',sans-serif;letter-spacing:3px;margin-top:10px}
 @media(min-width:650px){main{padding-top:28px}.dish-name{font-size:15px}.category{margin-bottom:38px}.gallery-grid{gap:15px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+:focus-visible{outline:2px solid var(--gold2);outline-offset:3px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.tab{min-height:48px;touch-action:manipulation}.search-wrap{display:flex;align-items:center}
+#search{min-width:0;min-height:46px;padding-right:84px}
+.clear-search{position:absolute;right:8px;top:5px;min-height:36px;padding:6px 12px;border:1px solid #9c7a2d;border-radius:3px;background:#211a0c;color:var(--gold2);font:600 12px 'DM Sans',sans-serif;cursor:pointer;touch-action:manipulation}
+.clear-search[hidden]{display:none}.dish{gap:9px;padding:11px 3px}.dish-name{font-size:15px;font-weight:500;color:#fff}
+.price{font-size:13px;padding:5px 12px;min-height:29px;display:inline-flex;align-items:center}
+.gallery-fallback{aspect-ratio:1/1.18;display:flex;align-items:center;justify-content:center;border:1px solid var(--gold);padding:3px;background:radial-gradient(circle,#33260e,#121212 72%);color:var(--gold2);font-size:34px}
+.tab:focus-visible,.clear-search:focus-visible{outline-offset:3px}
+@media(max-width:390px){.hero{padding:43px 14px 24px}.hero:before,.hero:after{font-size:11px;letter-spacing:3px}.sticky{padding:10px 11px}.tabs{gap:8px}.tab{font-size:19px;letter-spacing:1.5px;padding:10px 5px}main{padding:17px 14px 30px}.category{margin:21px 0 27px}.category h2{font-size:29px}.dish{gap:6px}.dish-name{font-size:14px}.price{font-size:12px;padding:4px 9px}}
+@media(min-width:650px){.tab{min-height:50px}.dish-name{font-size:16px}.price{font-size:13px}}
 </style></head>
 <body>
 <header class="hero"><div class="crest">✧ ❖ ✧</div><h1 class="brand">Mangueiras<span>RESTAURANTE E BAR</span></h1><p class="tagline">Temos o prato do dia das 12h até 15:30</p><div class="hero-rule"></div></header>
-<nav class="sticky" aria-label="Navegação do menu"><div class="tabs"><button class="tab active" data-tab="comidas" aria-pressed="true">COMIDAS</button><button class="tab" data-tab="bebidas" aria-pressed="false">BEBIDAS</button></div><div class="search-wrap"><input id="search" type="search" placeholder="Pesquisar no menu..." aria-label="Pesquisar no menu"></div></nav>
+<nav class="sticky" aria-label="Navegação do menu"><div class="tabs"><button class="tab active" data-tab="comidas" aria-pressed="true">COMIDAS</button><button class="tab" data-tab="bebidas" aria-pressed="false">BEBIDAS</button></div><div class="search-wrap"><label class="sr-only" for="search">Pesquisar por produto, categoria ou preço</label><input id="search" type="search" placeholder="Pesquisar no menu..." aria-label="Pesquisar por produto, categoria ou preço" autocomplete="off"><button id="clear-search" class="clear-search" type="button" aria-label="Limpar pesquisa" hidden>Limpar</button></div></nav>
 <main><div id="menu" class="menu-panel" aria-live="polite"></div></main>
 <footer>Mangueiras Restaurante e Bar - Obrigado pela sua visita<small>✧　HOSPITALIDADE • SABOR • TRADIÇÃO　✧</small></footer>
 <script>
@@ -74,7 +88,21 @@ bebidas:[
 ["Vinhos Tintos","🍷",[["Reguengos","700"],["Dom Mamede","650"],["Alandra","700"],["Monte Velho","700"],["5 Elementos","750"],["Nunes Barata","1000"],["Drosty-Hof","650"]]]
 ]};
 let active="comidas";
-const menu=document.getElementById("menu"), search=document.getElementById("search");
-function render(){const q=search.value.trim().toLocaleLowerCase("pt");let found=0;let html=menus[active].map(([title,icon,items])=>{const filtered=items.filter(([n,p])=>(n+" "+p+" "+title).toLocaleLowerCase("pt").includes(q));if(!filtered.length)return "";found+=filtered.length;return '<section class="category"><div class="category-head"><span class="category-icon">'+icon+'</span><h2>'+title+'</h2></div>'+filtered.map(([n,p])=>'<div class="dish"><span class="dish-name">'+n+'</span><span class="dots"></span><span class="price">'+(p==="Consultar"?"Consultar":p==="Por KG"?"Por KG":p+" MT")+'</span></div>').join("")+'</section>'}).join("");if(active==="comidas"&&!q)html+='<section class="gallery"><h2 class="gallery-title">Da nossa grelha, com sabor</h2><div class="gallery-grid"><img loading="lazy" alt="Carne grelhada na brasa" src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=500&q=80"><img loading="lazy" alt="Espetadas grelhadas" src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=500&q=80"><img loading="lazy" alt="Prato de grelhados" src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=500&q=80"></div></section>';menu.innerHTML=(found?html:'<div class="empty">Não encontrámos itens com essa pesquisa.</div>');}
-document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>{active=b.dataset.tab;document.querySelectorAll(".tab").forEach(x=>{const on=x===b;x.classList.toggle("active",on);x.setAttribute("aria-pressed",String(on))});menu.classList.remove("menu-panel");void menu.offsetWidth;menu.classList.add("menu-panel");render()}));search.addEventListener("input",render);render();
+const menu=document.getElementById("menu"),search=document.getElementById("search"),clearSearch=document.getElementById("clear-search");
+const normalizeText=value=>String(value).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLocaleLowerCase("pt");
+const escapeHTML=value=>String(value).replace(/[&<>"']/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]));
+function render(){
+ const q=normalizeText(search.value.trim());let found=0;
+ let output=menus[active].map(([title,icon,items])=>{
+  const filtered=items.filter(([name,price])=>normalizeText([name,title,price,price==="Consultar"?"Consultar":"",price==="Por KG"?"Por KG":price+" MT"].join(" ")).includes(q));
+  if(!filtered.length)return "";found+=filtered.length;
+  return '<section class="category"><div class="category-head"><span class="category-icon" aria-hidden="true">'+escapeHTML(icon)+'</span><h2>'+escapeHTML(title)+'</h2></div>'+filtered.map(([name,price])=>'<div class="dish"><span class="dish-name">'+escapeHTML(name)+'</span><span class="dots" aria-hidden="true"></span><span class="price">'+escapeHTML(price==="Consultar"||price==="Por KG"?price:price+" MT")+'</span></div>').join("")+'</section>';
+ }).join("");
+ if(active==="comidas"&&!q)output+='<section class="gallery" aria-label="Galeria ilustrativa"><h2 class="gallery-title">Da nossa grelha, com sabor</h2><div class="gallery-grid"><img loading="lazy" decoding="async" alt="Fotografia ilustrativa da galeria do restaurante" src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=500&q=80"><img loading="lazy" decoding="async" alt="Fotografia ilustrativa da galeria do restaurante" src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=500&q=80"><img loading="lazy" decoding="async" alt="Fotografia ilustrativa da galeria do restaurante" src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=500&q=80"></div></section>';
+ menu.innerHTML=found?output:'<div class="empty" role="status">Não encontrámos resultados para esta pesquisa. Experimente outro nome, categoria ou preço.</div>';
+ clearSearch.hidden=!search.value;
+ menu.querySelectorAll(".gallery img").forEach(img=>img.addEventListener("error",()=>{const fallback=document.createElement("div");fallback.className="gallery-fallback";fallback.setAttribute("role","img");fallback.setAttribute("aria-label","Imagem ilustrativa indisponível");fallback.textContent="✧";img.replaceWith(fallback)},{once:true}));
+}
+document.querySelectorAll(".tab").forEach(button=>button.addEventListener("click",()=>{active=button.dataset.tab;document.querySelectorAll(".tab").forEach(tab=>{const selected=tab===button;tab.classList.toggle("active",selected);tab.setAttribute("aria-pressed",String(selected))});menu.classList.remove("menu-panel");void menu.offsetWidth;menu.classList.add("menu-panel");render()}));
+search.addEventListener("input",render);clearSearch.addEventListener("click",()=>{search.value="";render();search.focus()});render();
 </script></body></html>
