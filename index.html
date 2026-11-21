@@ -106,3 +106,4 @@ function render(){
 document.querySelectorAll(".tab").forEach(button=>button.addEventListener("click",()=>{active=button.dataset.tab;document.querySelectorAll(".tab").forEach(tab=>{const selected=tab===button;tab.classList.toggle("active",selected);tab.setAttribute("aria-pressed",String(selected))});menu.classList.remove("menu-panel");void menu.offsetWidth;menu.classList.add("menu-panel");render()}));
 search.addEventListener("input",render);clearSearch.addEventListener("click",()=>{search.value="";render();search.focus()});render();
 </script></body></html>
+<!-- Lovable preview refresh: Mangueiras Restaurante e Bar | source refresh only -->
