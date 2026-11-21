@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0A0A0A"><meta name="description" content="Menu de consulta do Mangueiras Restaurante e Bar.">
+<title>Mangueiras Restaurante e Bar | Menu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--black:#0a0a0a;--panel:#121212;--gold:#d4af37;--gold2:#f5d67b;--white:#fff;--muted:#c9c2b2;--brown:#2b1d0e}
+*{box-sizing:border-box}html{scroll-behavior:smooth;background:var(--black)}body{margin:0;background:radial-gradient(ellipse at 50% 0%,#241b0c 0%,#101010 34%,#090909 75%);color:var(--white);font-family:'DM Sans',sans-serif;min-height:100vh}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.13;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");z-index:0}
+.hero{position:relative;text-align:center;padding:48px 18px 28px;overflow:hidden;border-bottom:1px solid #8e702b66}
+.hero:before,.hero:after{content:"✧　❖　✧";position:absolute;top:17px;color:#b18b32;font-size:15px;letter-spacing:8px;opacity:.8}.hero:before{left:12px}.hero:after{right:12px}
+.crest{color:var(--gold);font-size:23px;letter-spacing:8px;margin-bottom:10px;text-shadow:0 0 18px #d4af3766}
+.brand{font-family:'Cormorant Garamond',serif;font-size:clamp(42px,10vw,76px);line-height:.9;font-weight:600;letter-spacing:1px;margin:0 auto;color:var(--gold2);text-shadow:0 0 5px #f5d67b,0 0 18px #d4af3780,0 0 36px #d4af3740;max-width:760px}
+.brand span{display:block;font-size:.57em;letter-spacing:7px;margin-top:12px;color:var(--gold)}
+.tagline{color:var(--gold2);font-family:'Cormorant Garamond',serif;font-size:21px;letter-spacing:.6px;margin:21px 0 0}
+.hero-rule{width:min(230px,55%);height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:24px auto 0}
+.sticky{position:sticky;top:0;z-index:10;background:#0a0a0aee;backdrop-filter:blur(14px);border-bottom:1px solid #d4af3740;padding:12px 14px 13px}
+.tabs{display:flex;gap:10px;max-width:620px;margin:auto}
+.tab{flex:1;border:1px solid #a88636;border-radius:3px;background:#14110b;color:var(--gold2);font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:700;letter-spacing:2px;padding:11px 8px;cursor:pointer;transition:.25s}
+.tab.active{background:linear-gradient(135deg,#f5d67b,#b88a21);color:#100d07;box-shadow:0 0 18px #d4af3744}
+.search-wrap{max-width:620px;margin:11px auto 0;position:relative}
+.search-wrap:before{content:"⌕";position:absolute;left:14px;top:6px;font-size:25px;color:var(--gold)}
+#search{width:100%;background:#171512;border:1px solid #6e5627;border-radius:2px;color:#fff;padding:12px 14px 12px 42px;font:14px 'DM Sans',sans-serif;outline:none}
+#search:focus{border-color:var(--gold2);box-shadow:0 0 0 2px #d4af3722}#search::placeholder{color:#a79b82}
+main{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:22px 18px 36px}
+.menu-panel{animation:fade .45s ease both}@keyframes fade{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+.category{margin:24px 0 31px}.category-head{display:flex;align-items:center;gap:11px;border-bottom:1px solid #b48c32;padding-bottom:8px;margin-bottom:10px}
+.category-icon{color:var(--gold);font-size:18px}.category h2{font:600 32px/1 'Cormorant Garamond',serif;color:var(--gold2);margin:0;letter-spacing:.4px}
+.dish{display:flex;align-items:baseline;gap:7px;padding:10px 2px;border-radius:3px;transition:background .2s,box-shadow .2s}
+.dish:hover,.dish:active{background:#d4af3710;box-shadow:0 0 14px #d4af371c}
+.dish-name{font-size:14px;line-height:1.45;color:#f5f1e8;font-weight:400}
+.dots{flex:1;min-width:12px;border-bottom:1px dotted #a9873d;transform:translateY(-4px);opacity:.8}
+.price{white-space:nowrap;border:1px solid var(--gold);border-radius:30px;padding:3px 11px;color:var(--gold2);font-size:12px;font-weight:600;letter-spacing:.2px;background:#0b0b0b;box-shadow:inset 0 0 8px #d4af3710}
+.empty{color:#b8ad97;text-align:center;padding:40px 8px;font-family:'Cormorant Garamond',serif;font-size:22px}
+.gallery{margin:45px 0 10px}.gallery-title{text-align:center;color:var(--gold2);font:600 29px 'Cormorant Garamond',serif;margin:0 0 17px}.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.gallery img{width:100%;aspect-ratio:1/1.18;object-fit:cover;border:1px solid var(--gold);padding:3px;background:#17120a;filter:saturate(.86);transition:transform .3s,filter .3s}.gallery img:hover{transform:translateY(-3px);filter:saturate(1.1)}
+footer{position:relative;z-index:1;text-align:center;border-top:1px solid #8e702b66;padding:25px 15px 34px;color:var(--gold2);font:500 22px 'Cormorant Garamond',serif;letter-spacing:.3px}
+footer small{display:block;color:#a58a4d;font:10px 'DM Sans',sans-serif;letter-spacing:3px;margin-top:10px}
+@media(min-width:650px){main{padding-top:28px}.dish-name{font-size:15px}.category{margin-bottom:38px}.gallery-grid{gap:15px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+</style></head>
+<body>
+<header class="hero"><div class="crest">✧ ❖ ✧</div><h1 class="brand">Mangueiras<span>RESTAURANTE E BAR</span></h1><p class="tagline">Temos o prato do dia das 12h até 15:30</p><div class="hero-rule"></div></header>
+<nav class="sticky" aria-label="Navegação do menu"><div class="tabs"><button class="tab active" data-tab="comidas" aria-pressed="true">COMIDAS</button><button class="tab" data-tab="bebidas" aria-pressed="false">BEBIDAS</button></div><div class="search-wrap"><input id="search" type="search" placeholder="Pesquisar no menu..." aria-label="Pesquisar no menu"></div></nav>
+<main><div id="menu" class="menu-panel" aria-live="polite"></div></main>
+<footer>Mangueiras Restaurante e Bar - Obrigado pela sua visita<small>✧　HOSPITALIDADE • SABOR • TRADIÇÃO　✧</small></footer>
+<script>
+const menus={
+comidas:[
+["Entradas","✦",[["4 Chamussas","150"],["Moelas Estufadas","250"],["Camarão Alhinho","350"],["Cabeças de Lulas","250"],["Tiras de Bifi","300"],["Pão de Alho","150"]]],
+["Refeições Leves","❖",[["Codornizes","350"],["Prego no Prato","350"],["Prego no Pão","250"],["Azinhas de Galinha","250"]]],
+["Petiscos","✧",[["Alentejano de Porco","350"],["Amêijoa Simples","250"],["Dobrada","250"],["Cabrito","250"],["Mix","250"],["Cabeça de Peixe","300"]]],
+["Saladas","❋",[["Salada","100"],["Salada Grega","Consultar"],["Salada de Galinha","Consultar"],["Salada Mista","200"],["Salada Fria","Consultar"]]],
+["Grelhados","♨",[["Fillet na Frigideira","700"],["Espetada de Picanha","750"],["Chouriço","450"],["Peixe Inteiro","Por KG"],["Galinha Cafreal","Consultar"]]],
+["Carne por kg","♜",[["Porco","Por KG"],["Worse","Por KG"],["Babalaza","Por KG"],["Vaca","Por KG"],["T-Bone","Por KG"]]],
+["Pato Inteiro","✦",[["Pato Inteiro","1500"]]],
+["Frangos","♨",[["Frango Inteiro","800"],["1/2 Frango","450"],["1/4 Frango","300"]]],
+["Extra","✧",[["Dose de Batata","100"],["Arroz","100"],["Xima","80"],["Grau de Bico","Consultar"]]]
+],
+bebidas:[
+["Águas","❋",[["Vumba 500ml","50"],["Bonaqua 500ml","40"]]],
+["Chá & Café","☕",[["Chá Simples","100"],["Café Expresso","85"],["Expresso Duplo","150"],["Café com Leite","120"],["Café Descafeinado","100"]]],
+["Refrescos","✧",[["Garrafa 300ml","50"],["Tónica/Gingerale/Dry Lemon","80"],["Grapetiser/Appletiser","120"],["Red Bull","140"]]],
+["Sumos","❋",[["Compal 1L","200"],["Céres 200ml","50"],["Céres 1L","200"],["Santal 500ml","80"],["Santal 1L","200"],["Cappy","80"]]],
+["Espumantes","✦",[["Nua Moscato GF","Consultar"],["J.C Normal","1000"],["Tosti 24 Puré","Consultar"],["Moët","Consultar"],["Moscato","Consultar"],["Rich Veuve","Consultar"],["J.C Black","2000"],["Martine Asti","1500"]]],
+["Cervejas","♜",[["Manica/2M 500ml","100"],["2M Txoti/Lata","100"],["Lite Lata/Garrafa 330ml","100"],["Lite Txoti","100"],["Castle GF/Lata Double Malte","100"],["Milk Stout/Stella","100"],["Impala Lata","80"],["Manica 550ml GF","100"],["Preta 550ml","100"],["Txilar Lata","80"],["Heineken Lata/Txoti/Zero/Silver","100"],["Corona Lata","150"],["Corona Garrafa","120"]]],
+["Cervejas à Pressão","♨",[["Heineken 500ml","200"],["Heineken 350ml","170"],["Heineken 250ml","120"],["Txilar 500ml","150"],["Txilar 350ml","75"]]],
+["Cidras","✧",[["Bernini GF","120"],["Bernini Lata","140"],["Breezer/Myfair/Spin","100"],["Flying Fish/Brutal","100"],["Hunters Dry e Gold","100"],["Savana","100"]]],
+["Licor Shots","❖",[["Amarula","75"],["Jägermeister","100"],["Kahlúa","100"],["Martini","100"],["Sambuca","100"],["After Shock","100"],["Captain Morgan","75"]]],
+["Whisky Shots Simples","♜",[["Jameson Normal","100"],["Jameson Black Barrel","200"],["Jameson Stout Edition","150"],["J.W Red Label","100"],["J.W Black Label","150"],["Glenfiddich","200"],["Jack Daniels","100"]]],
+["Vinhos Tintos","🍷",[["Reguengos","700"],["Dom Mamede","650"],["Alandra","700"],["Monte Velho","700"],["5 Elementos","750"],["Nunes Barata","1000"],["Drosty","Consultar"]]]
+]};
+let active="comidas";
+const menu=document.getElementById("menu"), search=document.getElementById("search");
+function render(){const q=search.value.trim().toLocaleLowerCase("pt");let found=0;let html=menus[active].map(([title,icon,items])=>{const filtered=items.filter(([n,p])=>(n+" "+p+" "+title).toLocaleLowerCase("pt").includes(q));if(!filtered.length)return "";found+=filtered.length;return '<section class="category"><div class="category-head"><span class="category-icon">'+icon+'</span><h2>'+title+'</h2></div>'+filtered.map(([n,p])=>'<div class="dish"><span class="dish-name">'+n+'</span><span class="dots"></span><span class="price">'+(p==="Consultar"?"Consultar":p==="Por KG"?"Por KG":p+" MT")+'</span></div>').join("")+'</section>'}).join("");if(active==="comidas"&&!q)html+='<section class="gallery"><h2 class="gallery-title">Da nossa grelha, com sabor</h2><div class="gallery-grid"><img loading="lazy" alt="Carne grelhada na brasa" src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=500&q=80"><img loading="lazy" alt="Espetadas grelhadas" src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=500&q=80"><img loading="lazy" alt="Prato de grelhados" src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=500&q=80"></div></section>';menu.innerHTML=(found?html:'<div class="empty">Não encontrámos itens com essa pesquisa.</div>');}
+document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>{active=b.dataset.tab;document.querySelectorAll(".tab").forEach(x=>{const on=x===b;x.classList.toggle("active",on);x.setAttribute("aria-pressed",String(on))});menu.classList.remove("menu-panel");void menu.offsetWidth;menu.classList.add("menu-panel");render()}));search.addEventListener("input",render);render();
+</script></body></html>
