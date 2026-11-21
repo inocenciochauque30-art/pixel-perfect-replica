@@ -12,7 +12,14 @@
 header{padding:26px 16px 22px;text-align:center;background:linear-gradient(135deg,#201b14,#050505);border-bottom:7px solid var(--gold)}
 .brand{max-width:980px;margin:auto}.brand-logo{display:block;width:min(260px,70vw);height:auto;max-height:170px;object-fit:contain;margin:0 auto 10px}.welcome{margin:10px 0 0;color:#fff;font-family:Georgia,serif;font-size:clamp(22px,4vw,31px);font-weight:700;line-height:1.2;text-shadow:0 1px 9px rgba(255,255,255,.2)}.welcome span,.welcome strong{display:block}.welcome strong{font-size:clamp(25px,5vw,38px)}.hours{margin:10px 0 0;color:#e3bd61;font-family:Georgia,serif;font-size:16px;font-weight:700}
 .menu-wrap{width:min(1180px,100%);margin:0 auto;padding:16px 14px 50px}
-.switcher{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:2px auto 24px;max-width:760px}
+.switcher{
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #090807;
+  padding: 10px;
+  margin: 0 auto 24px;
+}
 .menu-wrap>input{position:absolute;width:1px;height:1px;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap}
 .switcher a{display:block;text-align:center;padding:15px 8px;border:2px solid var(--gold);border-radius:12px;color:#fff;background:linear-gradient(180deg,#292116,#100e0b);font-family:Georgia,serif;font-size:clamp(21px,4vw,30px);font-weight:900;letter-spacing:.06em;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.45)}
 .example-card{overflow:hidden;border:1px solid #c9a24d;border-radius:12px;background:linear-gradient(145deg,#d9b45f,#8f682b);padding:0;min-height:108px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.35)}.example-card h3{margin:0;padding:20px 12px;color:#17120a;font-family:Georgia,serif;font-size:clamp(16px,2.5vw,21px);font-weight:900;text-align:center;text-shadow:0 1px 0 rgba(255,255,255,.25)}
