@@ -10,54 +10,60 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--black:#0a0a0a;--panel:#121212;--gold:#d4af37;--gold2:#f5d67b;--white:#fff;--muted:#c9c2b2;--brown:#2b1d0e}
-*{box-sizing:border-box}html{scroll-behavior:smooth;background:var(--black)}body{margin:0;background:radial-gradient(ellipse at 50% 0%,#241b0c 0%,#101010 34%,#090909 75%);color:var(--white);font-family:'DM Sans',sans-serif;min-height:100vh}
-body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.13;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");z-index:0}
-.hero{position:relative;text-align:center;padding:48px 18px 28px;overflow:hidden;border-bottom:1px solid #8e702b66}
-.hero:before,.hero:after{content:"✧　❖　✧";position:absolute;top:17px;color:#b18b32;font-size:15px;letter-spacing:8px;opacity:.8}.hero:before{left:12px}.hero:after{right:12px}
-.crest{color:var(--gold);font-size:23px;letter-spacing:8px;margin-bottom:10px;text-shadow:0 0 18px #d4af3766}
-.brand{font-family:'Cormorant Garamond',serif;font-size:clamp(42px,10vw,76px);line-height:.9;font-weight:600;letter-spacing:1px;margin:0 auto;color:var(--gold2);text-shadow:0 0 5px #f5d67b,0 0 18px #d4af3780,0 0 36px #d4af3740;max-width:760px}
-.brand span{display:block;font-size:.57em;letter-spacing:7px;margin-top:12px;color:var(--gold)}
-.tagline{color:var(--gold2);font-family:'Cormorant Garamond',serif;font-size:21px;letter-spacing:.6px;margin:21px 0 0}
-.hero-rule{width:min(230px,55%);height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:24px auto 0}
-.sticky{position:sticky;top:0;z-index:10;background:#0a0a0aee;backdrop-filter:blur(14px);border-bottom:1px solid #d4af3740;padding:12px 14px 13px}
-.tabs{display:flex;gap:10px;max-width:620px;margin:auto}
-.tab{flex:1;border:1px solid #a88636;border-radius:3px;background:#14110b;color:var(--gold2);font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:700;letter-spacing:2px;padding:11px 8px;cursor:pointer;transition:.25s}
-.tab.active{background:linear-gradient(135deg,#f5d67b,#b88a21);color:#100d07;box-shadow:0 0 18px #d4af3744}
-.search-wrap{max-width:620px;margin:11px auto 0;position:relative}
-.search-wrap:before{content:"⌕";position:absolute;left:14px;top:6px;font-size:25px;color:var(--gold)}
-#search{width:100%;background:#171512;border:1px solid #6e5627;border-radius:2px;color:#fff;padding:12px 14px 12px 42px;font:14px 'DM Sans',sans-serif;outline:none}
-#search:focus{border-color:var(--gold2);box-shadow:0 0 0 2px #d4af3722}#search::placeholder{color:#a79b82}
-main{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:22px 18px 36px}
-.menu-panel{animation:fade .45s ease both}@keyframes fade{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
-.category{margin:24px 0 31px}.category-head{display:flex;align-items:center;gap:11px;border-bottom:1px solid #b48c32;padding-bottom:8px;margin-bottom:10px}
-.category-icon{color:var(--gold);font-size:18px}.category h2{font:600 32px/1 'Cormorant Garamond',serif;color:var(--gold2);margin:0;letter-spacing:.4px}
-.dish{display:flex;align-items:baseline;gap:7px;padding:10px 2px;border-radius:3px;transition:background .2s,box-shadow .2s}
-.dish:hover,.dish:active{background:#d4af3710;box-shadow:0 0 14px #d4af371c}
-.dish-name{font-size:14px;line-height:1.45;color:#f5f1e8;font-weight:400}
-.dots{flex:1;min-width:12px;border-bottom:1px dotted #a9873d;transform:translateY(-4px);opacity:.8}
-.price{white-space:nowrap;border:1px solid var(--gold);border-radius:30px;padding:3px 11px;color:var(--gold2);font-size:12px;font-weight:600;letter-spacing:.2px;background:#0b0b0b;box-shadow:inset 0 0 8px #d4af3710}
-.empty{color:#b8ad97;text-align:center;padding:40px 8px;font-family:'Cormorant Garamond',serif;font-size:22px}
-.gallery{margin:45px 0 10px}.gallery-title{text-align:center;color:var(--gold2);font:600 29px 'Cormorant Garamond',serif;margin:0 0 17px}.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
-.gallery img{width:100%;aspect-ratio:1/1.18;object-fit:cover;border:1px solid var(--gold);padding:3px;background:#17120a;filter:saturate(.86);transition:transform .3s,filter .3s}.gallery img:hover{transform:translateY(-3px);filter:saturate(1.1)}
-footer{position:relative;z-index:1;text-align:center;border-top:1px solid #8e702b66;padding:25px 15px 34px;color:var(--gold2);font:500 22px 'Cormorant Garamond',serif;letter-spacing:.3px}
-footer small{display:block;color:#a58a4d;font:10px 'DM Sans',sans-serif;letter-spacing:3px;margin-top:10px}
-@media(min-width:650px){main{padding-top:28px}.dish-name{font-size:15px}.category{margin-bottom:38px}.gallery-grid{gap:15px}}
+:root{--orange:#ff5a00;--orange2:#ff8a00;--red:#d71920;--yellow:#ffd400;--cream:#fff7e8;--ink:#28120a;--muted:#6f4938}
+*{box-sizing:border-box}html{scroll-behavior:smooth;background:var(--cream)}body{margin:0;background:linear-gradient(180deg,#fff0cf 0%,#fffaf1 42%,#fff4df 100%);color:var(--ink);font-family:'DM Sans',Arial,sans-serif;min-height:100vh}
+.hero{position:relative;text-align:center;padding:30px 16px 28px;overflow:hidden;color:#fff;background:linear-gradient(110deg,rgba(125,20,0,.84),rgba(235,62,0,.72)),url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1600&q=85') center/cover;border-bottom:8px solid var(--yellow)}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.48));pointer-events:none}.hero>*{position:relative}
+.crest{color:var(--yellow);font-size:25px;letter-spacing:8px;margin-bottom:12px;text-shadow:0 2px 8px #000}
+.brand{font-family:Georgia,'Times New Roman',serif;font-size:clamp(48px,12vw,92px);line-height:.92;font-weight:900;letter-spacing:-1px;margin:0 auto;color:#fff;text-shadow:0 4px 0 #9b2100,0 7px 18px #0009;max-width:950px}
+.brand span{display:block;font-size:.48em;letter-spacing:2px;margin-top:14px;color:var(--yellow);text-shadow:0 3px 7px #651600}
+.tagline{color:#fff;font-size:clamp(19px,4vw,27px);font-weight:800;margin:18px 0 0;text-shadow:0 2px 6px #000}
+.hero-rule{width:min(250px,60%);height:5px;background:var(--yellow);border-radius:9px;margin:20px auto 0}
+.open-badge{display:inline-block;margin-top:18px;padding:11px 20px;border-radius:50px;background:var(--yellow);color:#792000;font-size:17px;font-weight:1000;box-shadow:0 4px 0 #a83b00}
+.prato{background:linear-gradient(100deg,#c9141c,#f04416);color:#fff;text-align:center;padding:22px 14px;border-bottom:6px solid var(--yellow);box-shadow:0 5px 16px #9c260033}
+.prato h2{font-size:clamp(27px,6vw,38px);line-height:1.05;margin:0;font-weight:1000;text-shadow:0 2px 5px #650000}
+.prato p{font-size:clamp(17px,3.8vw,22px);font-weight:800;margin:8px 0 0}.prato strong{color:var(--yellow)}
+.gallery-top{max-width:1050px;margin:18px auto 8px;padding:0 12px}
+.gallery-title{text-align:center;color:#a6290a;font-size:clamp(24px,5vw,32px);font-weight:1000;margin:8px 0 14px}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.gallery-card{position:relative;overflow:hidden;border-radius:16px;border:3px solid var(--yellow);box-shadow:0 5px 14px #8c2b1730;background:#4c1a08}
+.gallery-card img{display:block;width:100%;height:clamp(115px,24vw,220px);object-fit:cover}
+.gallery-card span{position:absolute;bottom:0;left:0;right:0;padding:9px 5px;background:linear-gradient(transparent,#300b00ef);color:#fff;text-align:center;font-size:clamp(12px,2.6vw,18px);font-weight:1000;text-shadow:0 1px 4px #000}
+.sticky{position:sticky;top:0;z-index:10;background:#fff9edee;backdrop-filter:blur(12px);border-top:1px solid #ffc15c;border-bottom:3px solid var(--orange);padding:12px 14px}
+.tabs{display:flex;gap:10px;max-width:760px;margin:auto}
+.tab{flex:1;border:2px solid var(--orange);border-radius:13px;background:#fff;color:#c53c00;font-size:clamp(18px,4vw,24px);font-weight:1000;padding:13px 8px;cursor:pointer;transition:.2s;min-height:54px;touch-action:manipulation}
+.tab.active{background:linear-gradient(135deg,#ff7900,#e92d12);border-color:#d92312;color:#fff;box-shadow:0 4px 0 #a82b00}
+.search-wrap{max-width:760px;margin:12px auto 0;position:relative;display:flex;align-items:center}
+#search{width:100%;min-width:0;min-height:52px;background:#fff;border:2px solid #ff9a32;border-radius:12px;color:#32160a;padding:12px 88px 12px 15px;font:600 17px Arial,sans-serif;outline:none}
+#search:focus{border-color:var(--red);box-shadow:0 0 0 3px #ff8b332c}#search::placeholder{color:#9a7562}
+.clear-search{position:absolute;right:8px;top:7px;min-height:38px;padding:6px 12px;border:0;border-radius:9px;background:#ffe2b4;color:#a52c00;font:800 13px Arial,sans-serif;cursor:pointer}.clear-search[hidden]{display:none}
+main{position:relative;max-width:900px;margin:0 auto;padding:18px 15px 35px}
+.menu-panel{animation:fade .35s ease both}@keyframes fade{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+.category{margin:23px 0 29px}.category-head{display:flex;align-items:center;gap:10px;border-bottom:3px solid #ffb32c;padding-bottom:9px;margin-bottom:10px}
+.category-icon{color:#e13a08;font-size:25px}.category h2{font-size:clamp(27px,5.5vw,35px);line-height:1;color:#a92c08;margin:0;font-weight:1000;letter-spacing:.2px}
+.dish{display:flex;align-items:baseline;gap:8px;padding:12px 8px;border-radius:10px;border-bottom:1px solid #f4d7b3;transition:background .2s}
+.dish:hover,.dish:active{background:#fff0d8}
+.dish-name{font-size:clamp(17px,3.5vw,20px);line-height:1.35;color:#32180e;font-weight:700}
+.dots{flex:1;min-width:10px;border-bottom:2px dotted #d7a36d;transform:translateY(-4px)}
+.price{white-space:nowrap;border:2px solid #e43b17;border-radius:30px;padding:5px 12px;color:#b82013;font-size:clamp(15px,3vw,18px);font-weight:1000;background:#fff0d7;display:inline-flex;align-items:center;min-height:34px}
+.empty{color:#87360e;text-align:center;padding:40px 8px;font-size:23px;font-weight:800}
+footer{text-align:center;background:#8e2108;color:#fff;padding:27px 15px 35px;font-size:20px;font-weight:800;border-top:6px solid var(--yellow)}
+footer small{display:block;color:#ffe36a;font-size:12px;letter-spacing:2px;margin-top:10px}
+@media(max-width:430px){.hero{padding:27px 12px 24px}.brand{font-size:clamp(44px,12vw,64px)}.brand span{letter-spacing:1px}.gallery-grid{gap:6px}.gallery-card{border-width:2px;border-radius:11px}.gallery-card img{height:120px}.gallery-card span{font-size:11px;padding:7px 2px}.sticky{padding:10px}.tab{font-size:18px;padding:11px 5px}.dish{gap:5px;padding:11px 3px}.price{padding:4px 8px}}
+@media(min-width:700px){main{padding-top:26px}.category{margin-bottom:35px}.dish{padding:14px 10px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
-:focus-visible{outline:2px solid var(--gold2);outline-offset:3px}
+:focus-visible{outline:3px solid #e52e14;outline-offset:3px}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.tab{min-height:48px;touch-action:manipulation}.search-wrap{display:flex;align-items:center}
-#search{min-width:0;min-height:46px;padding-right:84px}
-.clear-search{position:absolute;right:8px;top:5px;min-height:36px;padding:6px 12px;border:1px solid #9c7a2d;border-radius:3px;background:#211a0c;color:var(--gold2);font:600 12px 'DM Sans',sans-serif;cursor:pointer;touch-action:manipulation}
-.clear-search[hidden]{display:none}.dish{gap:9px;padding:11px 3px}.dish-name{font-size:15px;font-weight:500;color:#fff}
-.price{font-size:13px;padding:5px 12px;min-height:29px;display:inline-flex;align-items:center}
-.gallery-fallback{aspect-ratio:1/1.18;display:flex;align-items:center;justify-content:center;border:1px solid var(--gold);padding:3px;background:radial-gradient(circle,#33260e,#121212 72%);color:var(--gold2);font-size:34px}
-.tab:focus-visible,.clear-search:focus-visible{outline-offset:3px}
-@media(max-width:390px){.hero{padding:43px 14px 24px}.hero:before,.hero:after{font-size:11px;letter-spacing:3px}.sticky{padding:10px 11px}.tabs{gap:8px}.tab{font-size:19px;letter-spacing:1.5px;padding:10px 5px}main{padding:17px 14px 30px}.category{margin:21px 0 27px}.category h2{font-size:29px}.dish{gap:6px}.dish-name{font-size:14px}.price{font-size:12px;padding:4px 9px}}
-@media(min-width:650px){.tab{min-height:50px}.dish-name{font-size:16px}.price{font-size:13px}}
 </style></head>
 <body>
-<header class="hero"><div class="crest">✧ ❖ ✧</div><h1 class="brand">Mangueiras<span>RESTAURANTE E BAR</span></h1><p class="tagline">Temos o prato do dia das 12h até 15:30</p><div class="hero-rule"></div></header>
+<div class="top" style="background:#ff5a00;color:#fff;text-align:center;padding:12px 8px;font-weight:1000;font-size:clamp(15px,3vw,20px)">🔥 MANGUEIRAS • CHURRASCO NA BRASA • MAPUTO 🔥</div>
+<header class="hero"><div class="crest">✧ ❖ ✧</div><h1 class="brand">MANGUEIRAS<span>RESTAURANTE &amp; BAR</span></h1><p class="tagline">Comida boa, brasa viva, ambiente familiar!</p><div class="open-badge">⭐ SABOR E ALEGRIA À MESA ⭐</div><div class="hero-rule"></div></header>
+<section class="prato"><h2>🍽️ PRATO DO DIA</h2><p><strong>Todos os dias, das 12h00 às 15h00</strong> • Preço especial!</p></section>
+<section class="gallery-top" aria-label="Destaques da grelha"><h2 class="gallery-title">🔥 DIRETO DA NOSSA BRASA 🔥</h2><div class="gallery-grid">
+<div class="gallery-card"><img loading="eager" fetchpriority="high" decoding="async" alt="Frango grelhado dourado" src="https://images.unsplash.com/photo-1598103442097-8b74394b95c6?auto=format&amp;fit=crop&amp;w=700&amp;q=85"><span>🍗 FRANGO GRELHADO</span></div>
+<div class="gallery-card"><img loading="eager" decoding="async" alt="Carne assada na brasa" src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&amp;fit=crop&amp;w=700&amp;q=85"><span>🥩 CARNE NA BRASA</span></div>
+<div class="gallery-card"><img loading="eager" decoding="async" alt="Camarões preparados" src="https://images.unsplash.com/photo-1559742811-822873691df8?auto=format&amp;fit=crop&amp;w=700&amp;q=85"><span>🍤 CAMARÃO</span></div>
+</div></section>
 <nav class="sticky" aria-label="Navegação do menu"><div class="tabs"><button class="tab active" data-tab="comidas" aria-pressed="true">COMIDAS</button><button class="tab" data-tab="bebidas" aria-pressed="false">BEBIDAS</button></div><div class="search-wrap"><label class="sr-only" for="search">Pesquisar por produto, categoria ou preço</label><input id="search" type="search" placeholder="Pesquisar no menu..." aria-label="Pesquisar por produto, categoria ou preço" autocomplete="off"><button id="clear-search" class="clear-search" type="button" aria-label="Limpar pesquisa" hidden>Limpar</button></div></nav>
 <main><div id="menu" class="menu-panel" aria-live="polite"></div></main>
 <footer>Mangueiras Restaurante e Bar - Obrigado pela sua visita<small>✧　HOSPITALIDADE • SABOR • TRADIÇÃO　✧</small></footer>
@@ -98,7 +104,7 @@ function render(){
   if(!filtered.length)return "";found+=filtered.length;
   return '<section class="category"><div class="category-head"><span class="category-icon" aria-hidden="true">'+escapeHTML(icon)+'</span><h2>'+escapeHTML(title)+'</h2></div>'+filtered.map(([name,price])=>'<div class="dish"><span class="dish-name">'+escapeHTML(name)+'</span><span class="dots" aria-hidden="true"></span><span class="price">'+escapeHTML(price==="Consultar"||price==="Por KG"?price:price+" MT")+'</span></div>').join("")+'</section>';
  }).join("");
- if(active==="comidas"&&!q)output+='<section class="gallery" aria-label="Galeria ilustrativa"><h2 class="gallery-title">Da nossa grelha, com sabor</h2><div class="gallery-grid"><img loading="lazy" decoding="async" alt="Fotografia ilustrativa da galeria do restaurante" src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=500&q=80"><img loading="lazy" decoding="async" alt="Fotografia ilustrativa da galeria do restaurante" src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=500&q=80"><img loading="lazy" decoding="async" alt="Fotografia ilustrativa da galeria do restaurante" src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=500&q=80"></div></section>';
+
  menu.innerHTML=found?output:'<div class="empty" role="status">Não encontrámos resultados para esta pesquisa. Experimente outro nome, categoria ou preço.</div>';
  clearSearch.hidden=!search.value;
  menu.querySelectorAll(".gallery img").forEach(img=>img.addEventListener("error",()=>{const fallback=document.createElement("div");fallback.className="gallery-fallback";fallback.setAttribute("role","img");fallback.setAttribute("aria-label","Imagem ilustrativa indisponível");fallback.textContent="✧";img.replaceWith(fallback)},{once:true}));
