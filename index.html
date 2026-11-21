@@ -7,6 +7,7 @@
 <title>Mangueiras Restaurante e Bar | Menu</title>
 <link rel="preconnect" href="https://images.unsplash.com">
 <style>
+html { scroll-behavior: smooth; }
 :root{color-scheme:dark;--bg:#090807;--card:#171411;--gold:#c8a34a;--white:#fff}
 *{box-sizing:border-box}html{background:var(--bg)}body{margin:0;background:radial-gradient(ellipse at 50% 0%,#29231b 0,#100e0b 42%,#050505 100%);color:var(--white);font-family:Arial,system-ui,sans-serif;font-size:16px;line-height:1.5}
 header{padding:26px 16px 22px;text-align:center;background:linear-gradient(135deg,#201b14,#050505);border-bottom:7px solid var(--gold)}
@@ -37,6 +38,17 @@ header{padding:26px 16px 22px;text-align:center;background:linear-gradient(135de
 footer{text-align:center;padding:26px 16px 36px;color:#c7bda9;border-top:1px solid #725a31;font-size:13px}
 @media(min-width:720px){.menu-wrap{padding-left:24px;padding-right:24px}.cards{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.product-card{padding:14px}.product-name{font-size:15px}.price{font-size:14px}.example-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.example-photo{height:190px}}
 @media(max-width:360px){.cards{gap:8px}.product-card{padding:9px 7px}.product-name{font-size:13px}.price{font-size:12px;padding:6px 7px}.example-photo{height:120px}}
+
+.switcher a {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  user-select: none;
+}
+
+.switcher a:active {
+  filter: brightness(1.1);
+  background: inherit;
+}
 </style>
 </head>
 <body>
