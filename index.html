@@ -16,9 +16,8 @@ header{padding:26px 16px 22px;text-align:center;background:linear-gradient(135de
 .menu-wrap>input{position:absolute;width:1px;height:1px;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap}
 .switcher label{display:block;text-align:center;padding:15px 8px;border:2px solid var(--gold);border-radius:12px;color:#fff;background:linear-gradient(180deg,#292116,#100e0b);font-family:Georgia,serif;font-size:clamp(21px,4vw,30px);font-weight:900;letter-spacing:.06em;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.45)}
 #tab-food:checked~.switcher label[for=tab-food],#tab-drinks:checked~.switcher label[for=tab-drinks]{background:linear-gradient(180deg,#d4b15d,#8e682b);color:#17120a;border-color:#f0d28b}
-.panels{position:relative}.food-panel,.drink-panel{display:none;width:100%}
-#tab-food:checked~.panels>.food-panel{display:block}
-#tab-drinks:checked~.panels>.drink-panel{display:block}
+.panels{position:relative}.food-panel,.drink-panel{display:none!important;width:100%}.food-panel.menu-active,.drink-panel.menu-active{display:block!important}
+.example-card{overflow:hidden;border:1px solid #c9a24d;border-radius:12px;background:linear-gradient(145deg,#d9b45f,#8f682b);padding:0;min-height:108px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.35)}.example-card h3{margin:0;padding:20px 12px;color:#17120a;font-family:Georgia,serif;font-size:clamp(16px,2.5vw,21px);font-weight:900;text-align:center;text-shadow:0 1px 0 rgba(255,255,255,.25)}
 .group-title{text-align:center;margin:6px 0 12px;color:#fff;font-size:clamp(28px,5vw,38px);font-weight:900;letter-spacing:.09em}.group-rule{height:5px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto 28px;border-radius:5px}
 .menu-section{margin:0 0 36px}.menu-section h2{margin:0 0 18px;text-align:center;color:#fff;font-family:Georgia,serif;font-style:italic;font-size:clamp(22px,4vw,30px);font-weight:800;letter-spacing:.025em}
 .cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.product-card{min-width:0;padding:12px 10px;background:rgba(20,17,13,.94);border:1px solid #6b593b;border-radius:10px;box-shadow:0 5px 16px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:space-between;gap:8px}
@@ -42,10 +41,10 @@ footer{text-align:center;padding:26px 16px 36px;color:#c7bda9;border-top:1px sol
 <div class="panels">
 <section class="food-panel"><div class="group-title">COMIDAS</div><div class="group-rule"></div><section class="examples" aria-label="Pratos de exemplo">
 <h2>Alguns dos nossos pratos</h2><div class="example-grid">
-<article class="example-card"><div class="example-photo photo1" role="img" aria-label="Fotografia de prato do menu físico"></div><h3>Camarão Alhinho</h3></article>
-<article class="example-card"><div class="example-photo photo2" role="img" aria-label="Fotografia de prato do menu físico"></div><h3>Frango Grelhado</h3></article>
-<article class="example-card"><div class="example-photo photo3" role="img" aria-label="Fotografia de prato do menu físico"></div><h3>Espetada de Picanha</h3></article>
-<article class="example-card"><div class="example-photo photo4" role="img" aria-label="Fotografia de prato do menu físico"></div><h3>Peixe Inteiro Grelhado</h3></article>
+<article class="example-card"><h3>Camarão Alhinho</h3></article>
+<article class="example-card"><h3>Frango Grelhado</h3></article>
+<article class="example-card"><h3>Espetada de Picanha</h3></article>
+<article class="example-card"><h3>Peixe Inteiro Grelhado</h3></article>
 </div></section>
 
 <section class="menu-section"><section class="menu-section"><h2>ENTRADAS</h2><div class="cards"><article class="product-card"><div class="product-name">4 CHAMUSSAS</div><div class="price">150,00 MT</div></article><article class="product-card"><div class="product-name">MOELAS ESTUFADAS</div><div class="price">250,00 MT</div></article><article class="product-card"><div class="product-name">CAMARÃO ALHINHO</div><div class="price">350,00 MT</div></article><article class="product-card"><div class="product-name">CABEÇAS DE LULAS</div><div class="price">250,00 MT</div></article><article class="product-card"><div class="product-name">TIRAS DE BIFI</div><div class="price">300,00 MT</div></article><article class="product-card"><div class="product-name">PÃO DE ALHO</div><div class="price">150,00 MT</div></article></div></section>
@@ -83,14 +82,20 @@ footer{text-align:center;padding:26px 16px 36px;color:#c7bda9;border-top:1px sol
   const drinks=document.getElementById('tab-drinks');
   const foodPanel=document.querySelector('.food-panel');
   const drinkPanel=document.querySelector('.drink-panel');
-  function showSelectedMenu(){
-    const showDrinks=drinks.checked;
-    foodPanel.style.display=showDrinks?'none':'block';
-    drinkPanel.style.display=showDrinks?'block':'none';
+  const foodLabel=document.querySelector('label[for="tab-food"]');
+  const drinksLabel=document.querySelector('label[for="tab-drinks"]');
+  function showMenu(which){
+    const showDrinks=which==='drinks';
+    food.checked=!showDrinks;
+    drinks.checked=showDrinks;
+    foodPanel.classList.toggle('menu-active',!showDrinks);
+    drinkPanel.classList.toggle('menu-active',showDrinks);
   }
-  food.addEventListener('change',showSelectedMenu);
-  drinks.addEventListener('change',showSelectedMenu);
-  showSelectedMenu();
+  foodLabel.addEventListener('click',function(){showMenu('food');});
+  drinksLabel.addEventListener('click',function(){showMenu('drinks');});
+  food.addEventListener('change',function(){showMenu('food');});
+  drinks.addEventListener('change',function(){showMenu('drinks');});
+  showMenu('food');
 })();
 </script>
 </body></html>
